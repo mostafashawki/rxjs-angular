@@ -9,7 +9,6 @@ import {CartService} from '../cart.service';
 export class ProfileComponent implements OnInit, OnDestroy {
 
   constructor(private cart: CartService) { }
-  // @Input() text: string;
   currentCart: number;
   subscription;
 
