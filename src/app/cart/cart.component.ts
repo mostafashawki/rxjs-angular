@@ -25,13 +25,13 @@ export class CartComponent implements OnInit, OnDestroy {
     );
   }
 
-  increment(): void {
+  addInCart(): void {
     this.cart.setCart(this.currentCart + 1);
     this.total = this.currentCart * 100;
     console.log('the current cart is ', this.currentCart);
   }
 
-  decrement(): void {
+  removeFromCart(): void {
     if(this.currentCart > 0){
       this.cart.setCart(this.currentCart - 1);
        this.total = this.currentCart * 100;
@@ -39,7 +39,7 @@ export class CartComponent implements OnInit, OnDestroy {
     
   }
 
-  reset(): void {
+  resetCart(): void {
     this.cart.resetCart();
     this.total = 0;
   }
