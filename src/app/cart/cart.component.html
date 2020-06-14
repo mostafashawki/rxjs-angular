@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>My Cart</h1>
+<h2>€ 100 item</h2>
+<div class="d-flex">
+    <div class="btn-group" role="group" aria-label="Toolbar">
+      <button type="button" class="btn btn-success" (click)="increment()"><i class="fas fa-plus"></i></button>
+      <button type="button" class="btn btn-primary" (click)="decrement()"><i class="fas fa-minus"></i></button>
+      <button type="button" class="btn btn-warning" (click)="reset()"><i class="fas fa-redo"></i></button>
+    </div>
+  </div>
+  
+    <p>{{currentCart}} items in the cart</p>
+    <p>Total: € {{total}}</p>
+    <br>
+    <a routerLink="/profile" routerLinkActive="active">My Profile</a>
+</div>
+
+
+
+
+  
