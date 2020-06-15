@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.cart.getCart().subscribe(
       res => {
-        this.currentCart = res.value;
+        this.currentCart = res;
       },
       err => {
         console.error(`An error occurred: ${err.message}`);

@@ -11,13 +11,13 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(private cart: CartService) { }
 
   currentCart: number;
-  total: number = 0;
+  total = 0;
   subscription;
 
   ngOnInit(): void {
     this.subscription = this.cart.getCart().subscribe(
       res => {
-        this.currentCart = res.value;
+        this.currentCart = res;
       },
       err => {
         console.error(`An error occurred: ${err.message}`);
@@ -28,15 +28,14 @@ export class CartComponent implements OnInit, OnDestroy {
   addInCart(): void {
     this.cart.setCart(this.currentCart + 1);
     this.total = this.currentCart * 100;
-    console.log('the current cart is ', this.currentCart);
   }
 
   removeFromCart(): void {
-    if(this.currentCart > 0){
+    if (this.currentCart > 0){
       this.cart.setCart(this.currentCart - 1);
-       this.total = this.currentCart * 100;
+      this.total = this.currentCart * 100;
     }
-    
+
   }
 
   resetCart(): void {
