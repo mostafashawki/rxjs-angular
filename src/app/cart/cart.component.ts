@@ -18,6 +18,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.subscription = this.cart.getCart().subscribe(
       res => {
         this.currentCart = res;
+        this.total = this.currentCart * 100;
       },
       err => {
         console.error(`An error occurred: ${err.message}`);
@@ -27,20 +28,17 @@ export class CartComponent implements OnInit, OnDestroy {
 
   addInCart(): void {
     this.cart.setCart(this.currentCart + 1);
-    this.total = this.currentCart * 100;
   }
 
   removeFromCart(): void {
     if (this.currentCart > 0){
       this.cart.setCart(this.currentCart - 1);
-      this.total = this.currentCart * 100;
     }
 
   }
 
   resetCart(): void {
     this.cart.resetCart();
-    this.total = 0;
   }
 
   ngOnDestroy(): void {
