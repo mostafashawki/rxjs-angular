@@ -22,6 +22,20 @@ export class CartService {
     this.cartTracker.next(val);
   }
 
+  /**
+   * Allows adding 1 to the behavior subject
+   */
+  addCart(): void {
+    this.cartTracker.next(this.cartTracker.value + 1);
+  }
+
+  /**
+   * Allows subtracting 1 to the behavior subject
+   */
+  removeCart(): void {
+    this.cartTracker.next(this.cartTracker.value - 1);
+  }
+
   /** Resets the count to the initial value */
   resetCart(): void {
     this.cartTracker.next(this.initialCount);

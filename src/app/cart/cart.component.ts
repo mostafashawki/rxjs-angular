@@ -1,49 +1,29 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { CartService } from '../cart.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit, OnDestroy {
+export class CartComponent {
 
   constructor(private cart: CartService) { }
 
-  currentCart: number;
-  total = 0;
-  subscription;
-
-  ngOnInit(): void {
-    this.subscription = this.cart.getCart().subscribe(
-      res => {
-        this.currentCart = res;
-        this.total = this.currentCart * 100;
-      },
-      err => {
-        console.error(`An error occurred: ${err.message}`);
-      }
-    );
-  }
+  currentCart: Observable<number> = this.cart.getCart();
+  total: Observable<number> = this.cart.getCart().pipe(map(v => v * 100));
 
   addInCart(): void {
-    this.cart.setCart(this.currentCart + 1);
+    this.cart.addCart();
   }
 
   removeFromCart(): void {
-    if (this.currentCart > 0){
-      this.cart.setCart(this.currentCart - 1);
-    }
-
+    this.cart.removeCart();
   }
 
   resetCart(): void {
     this.cart.resetCart();
   }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-
 }
