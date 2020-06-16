@@ -9,8 +9,8 @@
     </div>
   </div>
   
-    <p>{{currentCart}} items in the cart</p>
-    <p>Total: € {{total}}</p>
+    <p>{{currentCart | async}} items in the cart</p>
+    <p>Total: € {{total | async}}</p>
     <br>
     <a routerLink="/profile" routerLinkActive="active">My Profile</a>
 </div>
